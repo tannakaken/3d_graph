@@ -1,0 +1,7 @@
+use main for default git branch.
+use nvm for node version control.
+use react for frontend framework.
+use react three fiber for webgl framework.
+use types instead of interfaces.
+do not use export default.
+do not delete existing props.
