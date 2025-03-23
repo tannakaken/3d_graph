@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from "react";
+import { useCallback, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PieChart } from "./PieChart";
 import { OrbitControls } from "@react-three/drei";

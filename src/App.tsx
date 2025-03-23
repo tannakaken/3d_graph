@@ -1,4 +1,3 @@
-import React from "react";
 import ThreeDPieChartCanvas from "./ThreeDPieChart";
 import "./App.css";
 
