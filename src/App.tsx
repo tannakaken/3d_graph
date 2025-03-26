@@ -2,6 +2,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import ThreeDChart from './ThreeDChart';
 import { PieChart } from './PieChart';
+import { BarChart } from './BarChart';
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
       <Tabs>
         <TabList>
           <Tab>Pie Chart</Tab>
-          <Tab>Pie Chart</Tab>
+          <Tab>Bar Chart</Tab>
         </TabList>
   
         <TabPanel>
@@ -20,7 +21,7 @@ function App() {
         </TabPanel>
         <TabPanel>
           <ThreeDChart>
-            <PieChart />
+            <BarChart />
           </ThreeDChart>
         </TabPanel>
       </Tabs>
