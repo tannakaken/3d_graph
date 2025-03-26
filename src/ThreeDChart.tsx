@@ -60,6 +60,7 @@ const ThreeDChart = ({children}: Props) => {
         <directionalLight position={counterCameraPosition} intensity={2} />
         <directionalLight position={cameraPosition} intensity={2} />
         <ambientLight intensity={1} />
+        {/* 黒背景 */}
         <mesh>
           <sphereGeometry args={[50, 32, 32]} />
           <meshBasicMaterial color="black" side={THREE.BackSide} />

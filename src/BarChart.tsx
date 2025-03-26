@@ -67,25 +67,24 @@ export const BarChart = () => {
     [data],
   );
 
-  const getValue = (name: string) => {
-    if (isSpecialKey(name)) {
-      return 0;
-    }
-    return controls[name] as number;
-  };
-
-  const total = Object.keys(controls).reduce(
-    (sum: number, name) => sum + getValue(name),
-    0,
-  );
-
   const [hoveredIndex, setHoveredIndex] = useState<number | undefined>(undefined);
   useEffect(() => {
     document.body.style.cursor = hoveredIndex !== undefined ? 'pointer' : 'auto';
     return () => {
       document.body.style.cursor = 'auto';
+      for (let i = 0; i < data.length; i++) {
+        const datum = data[i];
+        if (i === 0) {
+          set({ [datum.name]: 3 });
+        } else if (i === 1) {
+          set({ [datum.name]: 7 });
+        } else {
+          set({ [datum.name]: 5 });
+        }
+        set({height: 1});
+      }
     };
-  }, [hoveredIndex]);
+  }, [hoveredIndex, data, set]);
 
   return (
     <group>
@@ -104,12 +103,12 @@ export const BarChart = () => {
         return (
           <React.Fragment key={`bar-chart-segment-${name}`}>
             <mesh
-              position={[index * 2 - data.length, barHeight / 2, 0]}
-              geometry={new THREE.BoxGeometry(1, barHeight, 1)}
+              position={[2 * (index - data.length - 1), barHeight / 2, 0]}
+              geometry={new THREE.BoxGeometry(1, barHeight, controls.height as number)}
               material={material}
             />
             <Text
-              position={[index * 2 - data.length, barHeight + 0.5, 0]}
+              position={[2 * (index - data.length - 1), barHeight + 0.5, 0]}
               fontSize={0.5}
               color={index === hoveredIndex ? "blue" : "white"}
               anchorX="center"

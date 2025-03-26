@@ -87,8 +87,20 @@ export const PieChart = () => {
     document.body.style.cursor = hoveredIndex !== undefined ? 'pointer' : 'auto';
     return () => {
       document.body.style.cursor = 'auto';
+      for (let i = 0; i < data.length; i++) {
+        const datum = data[i];
+        if (i === 0) {
+          set({ [datum.name]: 3 });
+        } else if (i === 1) {
+          set({ [datum.name]: 7 });
+        } else {
+          set({ [datum.name]: 5 });
+        }
+        set({height: 1});
+        set({"start angle": 0});
+      }
     }
-  }, [hoveredIndex]);
+  }, [hoveredIndex, data, set]);
 
   return (
     <group>
