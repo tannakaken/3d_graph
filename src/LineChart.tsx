@@ -1,5 +1,5 @@
 import { button, useControls } from "leva";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import * as THREE from "three";
 import { Line, Text } from "@react-three/drei";
 

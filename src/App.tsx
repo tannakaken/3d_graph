@@ -8,7 +8,7 @@ import { LineChart } from './LineChart';
 function App() {
   return (
     <div>
-      <h1>3D円グラフやめろ！</h1>
+      <h1>または私は如何にして心配するのを止めて3Dの円グラフを愛するようになったか</h1>
       <Tabs>
         <TabList>
           <Tab>Pie Chart</Tab>

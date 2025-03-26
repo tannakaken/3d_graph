@@ -1,42 +1,37 @@
-coding 
+# Code Quality Rules
 
-use main for default git branch.
-use nvm for node version control.
-use react for frontend framework.
-use react three fiber for webgl framework.
-use types instead of interfaces.
-do not use export default.
-do not delete existing props.
+1. Test Coverage:
+   - Before attempting completion, always make sure that any code changes have test coverage
+   - Ensure all tests pass before submitting changes
 
-# coding practics
+2. Lint Rules:
+   - Never disable any lint rules without explicit user approval
 
-** If all tests are not successful, it is not inertia. **
+# Coding Flor Rules
 
-## coding flow
+1. Coding flow.
+   - create git branch with unique name from main branch
+   - write code
+   - run test and fix errors
+   - apply linter and fix errors
+   - create pull request to main branch on github
 
-- create git branch with unique name from main branch.
-- write code.
-- run test and fix errors.
-- apply linter and fix errors.
-- create pull request to main branch on github.
 
-## coding principles
+# coding principles
 
-### functional programming
+1. functional programming
+   - use pure function
+   - use immutal data structure
+   - separate side effects
+   - ensure type safety
 
-- use pure function
-- use immutal data structure
-- separate side effects
-- ensure type safety
+2. test driven design
+   - Red-Green-Refactor cycle
+   - test as a spec
+   - quick iteration
+   - continuous refactoring
 
-### test driven design
-
-- Red-Green-Refactor cycle
-- test as a spec
-- quick iteration
-- continuous refactoring
-
-### 型定義
+3. Type Definition
 
 ```typescript
 // ensure type safety with branded type
@@ -45,3 +40,11 @@ type Money = Branded<number, "Money">;
 type Email = Branded<string, "Email">;
 ```
 
+4. local rules
+   - use main for default git branch.
+   - use nvm for node version control.
+   - use react for frontend framework.
+   - use react three fiber for webgl framework.
+   - use types instead of interfaces.
+   - do not use export default.
+   - do not delete existing props.
