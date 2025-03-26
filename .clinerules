@@ -1,3 +1,5 @@
+coding 
+
 use main for default git branch.
 use nvm for node version control.
 use react for frontend framework.
@@ -5,3 +7,37 @@ use react three fiber for webgl framework.
 use types instead of interfaces.
 do not use export default.
 do not delete existing props.
+
+# coding practics
+
+## coding flow
+
+- create git branch with unique name from main branch.
+- write code.
+- create pull request to main branch on github.
+
+## coding principles
+
+### functional programming
+
+- use pure function
+- use immutal data structure
+- separate side effects
+- ensure type safety
+
+### test driven design
+
+- Red-Green-Refactor cycle
+- test as a spec
+- quick iteration
+- continuous refactoring
+
+### 型定義
+
+```typescript
+// ensure type safety with branded type
+type Branded<T, B> = T & { _brand: B };
+type Money = Branded<number, "Money">;
+type Email = Branded<string, "Email">;
+```
+
