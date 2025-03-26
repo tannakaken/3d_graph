@@ -1,11 +1,12 @@
 import ThreeDPieChartCanvas from "./ThreeDPieChart";
-// import "./App.css";
+import TabComponent from "./TabComponent";
 
 function App() {
   return (
     <div>
       <h1>3D円グラフやめろ！</h1>
       <ThreeDPieChartCanvas />
+      <TabComponent />
     </div>
   );
 }
