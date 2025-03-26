@@ -1,5 +1,5 @@
 import ThreeDPieChartCanvas from "./ThreeDPieChart";
-import "./App.css";
+// import "./App.css";
 
 function App() {
   return (

@@ -10,10 +10,13 @@ do not delete existing props.
 
 # coding practics
 
+** If all tests are not successful, it is not inertia. **
+
 ## coding flow
 
 - create git branch with unique name from main branch.
 - write code.
+- run test and fix errors.
 - apply linter and fix errors.
 - create pull request to main branch on github.
 

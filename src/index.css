@@ -66,3 +66,31 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* 追加 */
+
+h1 {
+  margin: 0;
+  height: 5vh;
+  font-size: xx-large;
+}
+
+.canvas {
+  width: 100vw;
+  height: 90vh;
+  background-color: black;
+}
+
+.canvas button {
+  margin: 4px;
+}
+
+.icon {
+  padding: 5px;
+}
+
+.recording {
+  background-color: red;
+  border-radius: 10px;
+  padding: 5px;
+}
