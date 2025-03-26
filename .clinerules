@@ -14,6 +14,7 @@ do not delete existing props.
 
 - create git branch with unique name from main branch.
 - write code.
+- apply linter and fix errors.
 - create pull request to main branch on github.
 
 ## coding principles
