@@ -13,4 +13,10 @@ export default {
   // 以下を参考にした。
   // https://stackoverflow.com/questions/65106848/jest-configuration-setupfilesafterenv-option-was-not-found
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
+  // 以下を参考にした。
+  // https://qiita.com/Amsel/items/8a4859d06a8de551abf8
+  "moduleNameMapper": {
+    "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+    "\\.(css|scss)$": "<rootDir>/__mocks__/styleMock.js",
+  },
 };

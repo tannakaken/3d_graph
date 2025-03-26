@@ -1,6 +1,5 @@
-import { useCallback, useRef } from "react";
+import { type ReactNode, useCallback, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
-import { PieChart } from "./PieChart";
 import { OrbitControls } from "@react-three/drei";
 import { cameraPosition, counterCameraPosition } from "./constants";
 import * as THREE from "three";
@@ -8,7 +7,11 @@ import { FaCamera, FaVideo, FaUndo } from "react-icons/fa";
 import { useVideoRecorder } from "./hooks/useVideoRecorder";
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib'
 
-const ThreeDPieChartCanvas = () => {
+type Props = {
+  children: ReactNode;
+}
+
+const ThreeDChart = ({children}: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const takeScreenshot = useCallback(() => {
@@ -61,11 +64,11 @@ const ThreeDPieChartCanvas = () => {
           <sphereGeometry args={[50, 32, 32]} />
           <meshBasicMaterial color="black" side={THREE.BackSide} />
         </mesh>
-        <PieChart />
+        {children}
       </Canvas>
     </div>
   );
 };
 
-export default ThreeDPieChartCanvas;
+export default ThreeDChart;
 
