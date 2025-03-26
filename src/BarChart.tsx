@@ -94,7 +94,7 @@ export const BarChart = () => {
           return;
         }
         const value = controls[name] as number;
-        const barHeight = (value / total) * 10;
+        const barHeight = value / 5;
         const material = new THREE.MeshStandardMaterial({
           color: new THREE.Color(
             `hsl(${(index / data.length) * 360}, 100%, 50%)`,
@@ -111,7 +111,7 @@ export const BarChart = () => {
             <Text
               position={[index * 2 - data.length, barHeight + 0.5, 0]}
               fontSize={0.5}
-              color={index === hoveredIndex ? "blue" : "black"}
+              color={index === hoveredIndex ? "blue" : "white"}
               anchorX="center"
               anchorY="middle"
               onClick={() => {

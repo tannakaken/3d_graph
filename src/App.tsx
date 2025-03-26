@@ -12,7 +12,6 @@ function App() {
         <TabList>
           <Tab>Pie Chart</Tab>
           <Tab>Bar Chart</Tab>
-          <Tab>Pie Chart</Tab>
         </TabList>
   
         <TabPanel>
@@ -23,11 +22,6 @@ function App() {
         <TabPanel>
           <ThreeDChart>
             <BarChart />
-          </ThreeDChart>
-        </TabPanel>
-        <TabPanel>
-          <ThreeDChart>
-            <PieChart />
           </ThreeDChart>
         </TabPanel>
       </Tabs>
