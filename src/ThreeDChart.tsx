@@ -50,7 +50,7 @@ const ThreeDChart = ({children}: Props) => {
         <FaVideo size={15} className={isRecording ? "recording icon" : "icon"} />
       </button>
       <Canvas
-      camera={{position: cameraPosition}}
+        camera={{position: cameraPosition}}
         ref={canvasRef}
         gl={{
           preserveDrawingBuffer: true, // toDataURLで画像化するために必要。
