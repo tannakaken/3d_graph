@@ -75,6 +75,12 @@ h1 {
   font-size: xx-large;
 }
 
+@media screen and (max-width: 720px) {
+  h1 {
+    font-size: medium;
+  }
+}
+
 .canvas {
   width: 100vw;
   height: 80vh;
