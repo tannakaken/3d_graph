@@ -5,6 +5,7 @@ import { PieChart } from './PieChart';
 import { BarChart } from './BarChart';
 import { LineChart } from './LineChart';
 import { Prompt } from './Prompt';
+import { RadarChart } from './RadarChart';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Tab>Pie Chart</Tab>
           <Tab>Bar Chart</Tab>
           <Tab>Line Chart</Tab>
+          <Tab>Radar Chart</Tab>
         </TabList>
   
         <TabPanel>
@@ -30,6 +32,11 @@ function App() {
         <TabPanel>
           <ThreeDChart>
             <LineChart />
+          </ThreeDChart>
+        </TabPanel>
+        <TabPanel>
+          <ThreeDChart>
+            <RadarChart />
           </ThreeDChart>
         </TabPanel>
       </Tabs>
