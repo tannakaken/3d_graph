@@ -113,6 +113,7 @@ export const RadarChart = () => {
                 points={points}
                 color="rgba(255, 255, 255, 0.3)"
                 lineWidth={0.5}
+                dashed={true}
             />
         )})}
       {lines.map((line, index) => {
