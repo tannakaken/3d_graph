@@ -114,6 +114,8 @@ export const RadarChart = () => {
                 color="rgba(255, 255, 255, 0.3)"
                 lineWidth={0.5}
                 dashed={true}
+                gapSize={0.1}
+                dashSize={0.1}
             />
         )})}
       {lines.map((line, index) => {
