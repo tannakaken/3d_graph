@@ -100,3 +100,51 @@ h1 {
   border-radius: 10px;
   padding: 5px;
 }
+
+.prompt {
+  border-radius: 30px;
+}
+
+.prompt h2 {
+  font-size: 1.2em;
+}
+
+.prompt div div {
+  display: flex;
+  justify-content: center;
+}
+
+.prompt div div input {
+  border-radius: 16px;
+  padding: 8px;
+  width: 100%;
+}
+
+.prompt .buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.prompt::backdrop {
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.prompt:modal::backdrop {
+  opacity: 1;
+  animation: fadein 0.15s ease-in; /** backdropに表示アニメーションを付与 */
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/** モーダル表示中はスクロールしない */
+html:has(#prompt) {
+  overflow: hidden;
+}

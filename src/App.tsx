@@ -4,6 +4,7 @@ import ThreeDChart from './ThreeDChart';
 import { PieChart } from './PieChart';
 import { BarChart } from './BarChart';
 import { LineChart } from './LineChart';
+import { Prompt } from './Prompt';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           </ThreeDChart>
         </TabPanel>
       </Tabs>
+      <Prompt.Root />
     </div>
   );
 }

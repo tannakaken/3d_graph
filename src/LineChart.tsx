@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { Line, Text } from "@react-three/drei";
 
 import type { ButtonInput } from "leva/dist/declarations/src/types";
+import { Prompt } from "./Prompt";
 
 const initialData = () => ([
   { name: "point 1", value: 1 },
@@ -76,8 +77,8 @@ export const LineChart = () => {
           color={index === hoveredIndex ? "blue" : "white"}
           anchorX="center"
           anchorY="middle"
-          onClick={() => {
-            const newTitle = prompt("データの名前を入力してください", titles[datum.name]);
+          onClick={async () => {
+            const newTitle = await Prompt.call({message: "データの名前を入力してください。", defaultValue: titles[datum.name]});
             if (newTitle) {
               titles[datum.name] = newTitle;
               setTitles({ ...titles });

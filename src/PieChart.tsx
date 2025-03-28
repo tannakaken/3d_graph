@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { Text } from "@react-three/drei";
 
 import type { ButtonInput } from "leva/dist/declarations/src/types";
+import { Prompt } from "./Prompt";
 
 const initialData = () => ([
   {name: "item 1", value: 3},
@@ -67,7 +68,6 @@ export const PieChart = () => {
     ),
     [data],
   );
-  console.warn(controls);
 
   const getValue = (name: string) => {
     if (isSpecialKey(name)) {
@@ -144,8 +144,10 @@ export const PieChart = () => {
                 color={index === hoveredIndex ? "blue" : "black"}
                 anchorX="center"
                 anchorY="middle"
-                onClick={() => {
-                  const newTitle = prompt("データの名前を入力してください", titles[name])
+                onClick={async (event) => {
+                  // これをしないと、グラフの向こう側のTextのクリックイベントが発火することがある。
+                  event.stopPropagation();
+                  const newTitle = await Prompt.call({message: "データの名前を入力してください。", defaultValue: titles[name]})
                   if (newTitle) {
                     titles[name] = newTitle;
                     setTitles({...titles});
