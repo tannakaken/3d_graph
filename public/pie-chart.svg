@@ -1,3 +1,4 @@
+<!-- 手で書いた温かみのあるsvgです。 -->
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--logos" width="32" height="32" viewBox="0 0 32 32">
   <!-- stroke-dasharrayは線と隙間の長さを指定する。一つ目の数字として、半径8での弧の長さを、二つ目の数字として半径8での円周全体の長さを指定すれば、一つだけ弧が引ける。 そこでstroke-widthを半径と円グラフの同じにすれば扇型が描ける。 -->
   <!-- rotateは回転角度と回転中心を指定できる。これで円グラフの一つの成分の開始位置を設定できる。 -->

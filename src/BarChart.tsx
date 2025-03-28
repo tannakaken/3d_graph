@@ -65,7 +65,7 @@ export const BarChart = () => {
         "height": 1,
       } as Record<string, number | ButtonInput>,
     ),
-    [data],
+    [data, titles],
   );
 
   const [hoveredIndex, setHoveredIndex] = useState<number | undefined>(undefined);

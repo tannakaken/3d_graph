@@ -20,6 +20,8 @@ const isSpecialKey = (name: string) => {
   return name === "height" || name === "start angle" || name === "add value" || name === "reset value";
 }
 
+const RADIUS = 3;
+
 /**
  * 円グラフを表すr3fの3DUI
  */
@@ -66,7 +68,7 @@ export const PieChart = () => {
         "start angle": {value: 0, step: 1},
       } as Record<string, number | ButtonInput | {value: number, step: number}>
     ),
-    [data],
+    [data, titles],
   );
 
   const getValue = (name: string) => {
@@ -102,6 +104,7 @@ export const PieChart = () => {
     }
   }, [hoveredIndex, data, set]);
 
+
   return (
     <group>
       {Object.keys(controls).map((name, index) => {
@@ -112,7 +115,7 @@ export const PieChart = () => {
         const angle = (value / total) * Math.PI * 2;
         const shape = new THREE.Shape();
         shape.moveTo(0, 0);
-        shape.arc(0, 0, 5, startAngle, startAngle - angle, true);
+        shape.arc(0, 0, RADIUS, startAngle, startAngle - angle, true);
         shape.lineTo(0, 0);
         startAngle -= angle;
 
@@ -127,8 +130,8 @@ export const PieChart = () => {
         });
 
         const labelAngle = startAngle + angle / 2;
-        const labelX = 3 * Math.cos(labelAngle);
-        const labelY = 3 * Math.sin(labelAngle);
+        const labelX = Math.round(RADIUS / 2) * Math.cos(labelAngle);
+        const labelY = Math.round(RADIUS / 2) * Math.sin(labelAngle);
 
         return (
           <React.Fragment key={`pie-chart-segment-${name}`}>
