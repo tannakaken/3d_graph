@@ -5,6 +5,7 @@ import { Text } from "@react-three/drei";
 
 import type { ButtonInput } from "leva/dist/declarations/src/types";
 import { Prompt } from "./Prompt";
+import { resolveColor } from "./helpers/color.helper";
 
 const initialData = () => ([
   { name: "item 1", value: 3 },
@@ -17,7 +18,7 @@ const initialTitle = () => ({
 });
 
 const isSpecialKey = (name: string) => {
-  return name === "height" || name === "add value" || name === "reset value";
+  return name === "height" || name === "add value" || name === "reset values";
 };
 
 /**
@@ -48,7 +49,7 @@ export const BarChart = () => {
             [newName]: newName,
           });
         }),
-        "reset value": button(() => {
+        "reset values": button(() => {
           for (let i = 0; i < data.length; i++) {
             const datum = data[i];
             if (i === 0) {
@@ -97,7 +98,7 @@ export const BarChart = () => {
         const barHeight = value / 5;
         const material = new THREE.MeshStandardMaterial({
           color: new THREE.Color(
-            `hsl(${(index / data.length) * 360}, 100%, 50%)`,
+            resolveColor(index, data.length),
           ),
         });
 

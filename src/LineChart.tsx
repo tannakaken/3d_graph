@@ -5,6 +5,8 @@ import { Line, Text } from "@react-three/drei";
 
 import type { ButtonInput, FolderInput } from "leva/dist/declarations/src/types";
 import { Prompt } from "./Prompt";
+import { resolveColor } from "./helpers/color.helper";
+import Legend from "./Legend";
 
 const initialData = () => ([
   {name: "line 1", data: [
@@ -19,10 +21,15 @@ const initialData = () => ([
   ]},
 ]);
 
-const initialTitle = () => ({
+const initialCategoryTitle = () => ({
   '1': '1月',
   '2': '2月',
   '3': '3月',
+});
+
+const initialLineTitle = () => ({
+  'line 1': 'line 1',
+  'line 2': 'line 2',
 });
 
 
@@ -31,7 +38,8 @@ const initialTitle = () => ({
  */
 export const LineChart = () => {
   const [lines, setLines] = useState(initialData());
-  const [titles, setTitles] = useState<Record<string, string>>(initialTitle());
+  const [categoryTitles, setCategoryTitles] = useState<Record<string, string>>(initialCategoryTitle());
+  const [lineTitles, setLineTitles] = useState<Record<string, string>>(initialLineTitle());
 
   const [controls] = useControls(
 
@@ -48,32 +56,33 @@ export const LineChart = () => {
         return acc;
       },
       {
-        "add value": button(() => {
+        "add category": button(() => {
           const newName = `${lines[0].data.length + 1}`;
           for (const datum in lines) {
             lines[datum].data.push({ name: newName, value: lines.length + 1 });
           }
           setLines([...lines]);
-          setTitles({
-            ...titles,
+          setCategoryTitles({
+            ...categoryTitles,
             [newName]: newName,
           });
         }),
         "add line": button(() => {
           const newName = `line ${lines.length + 1}`;
           setLines([...lines, { name: newName, data: [...lines[0].data] }]);
-          setTitles({
-            ...titles,
+          setLineTitles({
+            ...lineTitles,
             [newName]: newName,
           });
         }),
-        "reset value": button(() => {
+        "reset lines": button(() => {
           setLines(initialData());
-          setTitles(initialTitle());
+          setCategoryTitles(initialCategoryTitle());
+          setLineTitles(initialLineTitle());
         }),
       } as Record<string, ButtonInput | FolderInput<Record<string, number>>>,
     ),
-    [lines, titles],
+    [lines, categoryTitles],
   );
 
   const [hoveredIndex, setHoveredIndex] = useState<number | undefined>(undefined);
@@ -90,10 +99,19 @@ export const LineChart = () => {
 
   return (
     <group>
+       <Legend 
+        position={[-4, 3, 0]}
+        totalLength={lines.length}
+        items={lines.map((line, index) => ({ index, label: lineTitles[line.name] }))}
+        onClick={async (index) => {
+          const name = lines[index].name;
+          const newTitle = await Prompt.call({message: "折れ線の名前を入力してください。", defaultValue: lineTitles[name]});
+            if (newTitle) {
+              lineTitles[name] = newTitle;
+              setLineTitles({ ...lineTitles });
+            }
+        }} />
       {lines.map((line, index) => {
-        const color = new THREE.Color(
-          `hsl(${(index / lines.length) * 360}, 100%, 50%)`
-        )
         const points = line.data.map(
           (point, pointIndex) => new THREE.Vector3(
             calcPositionX(pointIndex),
@@ -102,7 +120,7 @@ export const LineChart = () => {
         return (<Line 
           key={`line-${line.name}`}
           points={points}
-          color={color}
+          color={resolveColor(index, lines.length)}
           lineWidth={2} />);
       })}
       {lines[0].data.map((point, pointIndex) => (
@@ -114,16 +132,16 @@ export const LineChart = () => {
           anchorX="center"
           anchorY="middle"
           onClick={async () => {
-            const newTitle = await Prompt.call({message: "データの名前を入力してください。", defaultValue: titles[point.name]});
+            const newTitle = await Prompt.call({message: "データの名前を入力してください。", defaultValue: categoryTitles[point.name]});
             if (newTitle) {
-              titles[point.name] = newTitle;
-              setTitles({ ...titles });
+              categoryTitles[point.name] = newTitle;
+              setCategoryTitles({ ...categoryTitles });
             }
           }}
           onPointerOver={() => setHoveredIndex(pointIndex)}
           onPointerOut={() => setHoveredIndex(undefined)}
         >
-          {titles[point.name]}
+          {categoryTitles[point.name]}
         </Text>)
       )}
     </group>
