@@ -6,17 +6,20 @@ import { BarChart } from './BarChart';
 import { LineChart } from './LineChart';
 import { Prompt } from './Prompt';
 import { RadarChart } from './RadarChart';
+import { ThreeDNovel } from './ThreeDNovel';
+import { novelEn, novelJa } from './novel';
 
 function App() {
   return (
     <div>
-      <h1>または私は如何にして心配するのを止めて3Dの円グラフを愛するようになったか</h1>
+      <h1>Dr. Strangegraph</h1>
       <Tabs>
         <TabList>
           <Tab>Pie Chart</Tab>
           <Tab>Bar Chart</Tab>
           <Tab>Line Chart</Tab>
           <Tab>Radar Chart</Tab>
+          <Tab>Or: How I Learned...</Tab>
         </TabList>
   
         <TabPanel>
@@ -38,6 +41,11 @@ function App() {
           <ThreeDChart>
             <RadarChart />
           </ThreeDChart>
+        </TabPanel>
+        <TabPanel>
+          <ThreeDChart>
+            <ThreeDNovel text={window.navigator.language === "ja" ? novelJa : novelEn} fontSize={0.25} />
+          </ThreeDChart>  
         </TabPanel>
       </Tabs>
       <Prompt.Root />
