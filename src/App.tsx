@@ -15,11 +15,11 @@ function App() {
       <h1>Dr. Strangegraph</h1>
       <Tabs>
         <TabList>
-          <Tab>Pie Chart</Tab>
-          <Tab>Bar Chart</Tab>
-          <Tab>Line Chart</Tab>
-          <Tab>Radar Chart</Tab>
-          <Tab>Or: How I Learned...</Tab>
+          <Tab><span>Pie Chart</span></Tab>
+          <Tab><span>Bar Chart</span></Tab>
+          <Tab><span>Line Chart</span></Tab>
+          <Tab><span>Radar Chart</span></Tab>
+          <Tab><span>Or: How I Learned...</span></Tab>
         </TabList>
   
         <TabPanel>

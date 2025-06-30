@@ -148,3 +148,27 @@ h1 {
 html:has(#prompt) {
   overflow: hidden;
 }
+
+/* マイクロインタラクション */
+
+
+/* hoverでのアンダーラインのアニメーション */
+.react-tabs__tab span::after {
+  content: "";
+  display: block;
+  width: 0;
+  transition: width 0.3s;
+  border-bottom: 1px solid #999;
+}
+.react-tabs__tab[aria-selected="false"] span:hover::after {
+  width: 100%;
+}
+
+/* hoverでのアイコンボタンのアニメーション */
+button svg {
+  transition: rotate 0.3s ease;
+}
+
+button:hover svg {
+  rotate: 360deg;
+}
